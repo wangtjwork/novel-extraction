@@ -1,8 +1,12 @@
-import cProfile
-from gensim.models import Word2Vec
+import json, os
 
-cProfile.run("model = Word2Vec.load_word2vec_format('./GoogleNews-vectors-negative300.bin', binary = True)")
-
-cProfile.run("print model['computer']")
-cProfile.run("print model['king']")
-cProfile.run("")
+with open('data/signalmedia-1m.jsonl', 'r') as f:
+    article = open('data/article/article.txt', 'w')
+    title = open('data/title/title.txt', 'w')
+    
+    for _ in range(100):
+        line = f.readline()
+        jfile= json.loads(line)
+    
+        article.write(jfile['content'].encode("utf-8") + '\n')
+        title.write(jfile['title'].encode("utf-8") + '\n')
