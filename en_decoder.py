@@ -160,3 +160,4 @@ for _ in range(NB_EPOCH):
         model.fit(x_train, y_train, validation_data=(x_val, y_val),
               nb_epoch=1, batch_size=250)
 
+model.save_weights('summary.h5')
